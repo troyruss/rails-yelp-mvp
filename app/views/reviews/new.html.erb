@@ -1,0 +1,5 @@
+<div class="container mt-4">
+  <h1>Add a review for <%= @restaurant.name %>!</h1>
+  <%= render 'form', review: @review %>
+  <p class="mt-4"><%= link_to "Go back", restaurants_path, class: "btn btn-outline-info" %></p>
+</div>
