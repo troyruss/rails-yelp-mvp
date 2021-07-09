@@ -1,5 +1,42 @@
 <div class="container mt-4">
   <h1><%= @restaurant.name %></h1>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row">Phone Number</th>
+        <td><%= @restaurant.phone_number %></td>
+      </tr>
+      <tr>
+        <th scope="row">Address</th>
+        <td><%= @restaurant.address %></td>
+      </tr>
+      <tr>
+        <th scope="row">Category</th>
+        <td><%= @restaurant.category.capitalize %></td>
+      </tr>
+      <tr>
+        <th scope="row">Average Rating</th>
+        <td>
+          <% ratings_array = [] %>
+          <% @restaurant.reviews.each do |review| %>
+            <% ratings_array << review.rating %>
+          <% end %>
+          <%= '⭐️' * (ratings_array.sum / ratings_array.count) %>
+          (<%= ratings_array.count %>)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>Reviews</h3>
+  <ul class="list-group list-group-flush mb-4">
+    <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <p class="small"><%= '⭐️' * review.rating %></p>
+      <%= review.content %>
+    </li>
+    <% end %>
+  </ul>
   <%= link_to 'Back |', restaurants_path %>
   <%= link_to 'Leave a review ✍️', new_restaurant_review_path(@restaurant) %>
 </div>
+

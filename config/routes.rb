@@ -5,3 +5,5 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:destroy]
 end
+
+# get "restaurants/:id/reviews", to: "restaurants#show", as: :restaurant

@@ -4,6 +4,8 @@
     <% @restaurants.each do |restaurant| %>
     <li class="list-group-item"> 🍽
       <%= link_to restaurant.name, restaurant_path(restaurant) %>
+       | 📞<%= restaurant.phone_number %>
+       <p><%= restaurant.address %> </p>
     </li>
     <% end %>
   </ul>
